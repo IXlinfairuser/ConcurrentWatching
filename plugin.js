@@ -6,12 +6,6 @@ videojs.plugin('sendRequest', function() {
 	fp.get(function(result){
 		userID = result;
 	});
-	// player.on('loadedmetadata', function(){
-	// 	fp = new Fingerprint2();
-	// 	fp.get(function(result){
-	// 		userID = result;
-	// 	});
-	// });
 	player.on('play', function() {
 		status = 'playing';
 		if(isFirst){
@@ -19,21 +13,9 @@ videojs.plugin('sendRequest', function() {
 			entryTime = new Date().toJSON();
 			userID += '_' + entryTime;
 			myAjax();
-			// JQuery.ajax({
-			// 	type: 'POST',
-			// 	url: 'https://ixec2.tk/api/post',
-			// 	data: {userID , videoID, status, entryTime}
-			// });
-			//$.post('https://ixec2.tk/api/post', {userID , videoID, status, entryTime});
 			isFirst = false;
 			requestTimer = setInterval(function(){
 				myAjax();
-				// JQuery.ajax({
-				// 	type: 'POST',
-				// 	url: 'https://ixec2.tk/api/post',
-				// 	data: {userID , videoID, status, entryTime}
-				// });
-				//$.post('https://ixec2.tk/api/post', {userID , videoID, status, entryTime});
 			}, 30000);
 		}
 	});
@@ -47,7 +29,6 @@ videojs.plugin('sendRequest', function() {
 		formData.append('videoID', videoID);
 		formData.append('status', status);
 		formData.append('entryTime', entryTime);
-
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', 'https://ixec2.tk/api/post', true);
 		xhr.send(formData);
