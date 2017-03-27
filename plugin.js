@@ -30,7 +30,7 @@ videojs.plugin('sendRequest', function() {
 		formData.append('status', status);
 		formData.append('entryTime', entryTime);
 		var xhr = new XMLHttpRequest();
-		xhr.open('POST', 'https://ixec2.tk/api/post', true);
+		xhr.open('POST', 'https://tvbs.ml/api/post', true);
 		xhr.send(formData);
 	};
 });
